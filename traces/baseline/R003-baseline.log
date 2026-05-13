@@ -1,0 +1,10 @@
+run_id: R003-baseline
+task_id: T003
+sandbox: baseline
+command: issue_harness --issue 20982 --node current-hermes-agent
+input_summary: Use Hermes-Agent issue #20982 as the simulation input for the current behavior node.
+output_summary: Baseline surfaces a generic no-provider error after AIAgent construction fails.
+failure_detected: True
+error_category: auth_missing
+recovery_hint_quality: 1
+notes: Current Hermes-Agent behavior on issue input. Recovery hint quality 1: generic or weak hint.

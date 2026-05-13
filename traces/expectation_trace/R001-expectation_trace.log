@@ -1,0 +1,10 @@
+run_id: R001-expectation_trace
+task_id: T001
+sandbox: expectation_trace
+command: issue_harness --issue 24154 --node patched-expectation-trace
+input_summary: Use the same issue #24154 as input, but run it through the patched second-node observer.
+output_summary: Patched second node classified context_mismatch and produced an issue-specific recovery hint.
+failure_detected: True
+error_category: context_mismatch
+recovery_hint_quality: 3
+notes: Second-node patch used issue input, not issue prediction. Recovery hint quality 3: specific actionable hint.

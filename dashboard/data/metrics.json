@@ -1,0 +1,71 @@
+{
+  "total_tasks": 6,
+  "github_issue_tasks": 6,
+  "controlled_simulation_tasks": 0,
+  "baseline_runs": 6,
+  "expectation_trace_runs": 6,
+  "total_expectation_traces": 12,
+  "surprise_distribution": {
+    "low": 0,
+    "medium": 6,
+    "high": 6
+  },
+  "by_category": {
+    "auth_missing": {
+      "tasks": 1,
+      "avg_surprise": 0.74,
+      "baseline_avg_recovery_hint_quality": 1,
+      "trace_avg_recovery_hint_quality": 3
+    },
+    "context_mismatch": {
+      "tasks": 1,
+      "avg_surprise": 0.58,
+      "baseline_avg_recovery_hint_quality": 0,
+      "trace_avg_recovery_hint_quality": 3
+    },
+    "empty_output": {
+      "tasks": 1,
+      "avg_surprise": 0.62,
+      "baseline_avg_recovery_hint_quality": 1,
+      "trace_avg_recovery_hint_quality": 2
+    },
+    "malformed_output": {
+      "tasks": 1,
+      "avg_surprise": 0.64,
+      "baseline_avg_recovery_hint_quality": 1,
+      "trace_avg_recovery_hint_quality": 3
+    },
+    "platform_error": {
+      "tasks": 1,
+      "avg_surprise": 0.6,
+      "baseline_avg_recovery_hint_quality": 1,
+      "trace_avg_recovery_hint_quality": 3
+    },
+    "secret_leak_risk": {
+      "tasks": 1,
+      "avg_surprise": 0.68,
+      "baseline_avg_recovery_hint_quality": 0,
+      "trace_avg_recovery_hint_quality": 2
+    }
+  },
+  "failure_detection_rate": {
+    "baseline": 0.67,
+    "expectation_trace": 1.0
+  },
+  "avg_recovery_hint_quality": {
+    "baseline": 0.67,
+    "expectation_trace": 2.67
+  },
+  "avg_time_to_diagnosis_steps": {
+    "baseline": 3.5,
+    "expectation_trace": 1
+  },
+  "secret_redaction_passed": true,
+  "jsonl_export_valid": true,
+  "tests": {
+    "passed": 3,
+    "failed": 0,
+    "skipped": 1
+  },
+  "overall_result": "mixed"
+}

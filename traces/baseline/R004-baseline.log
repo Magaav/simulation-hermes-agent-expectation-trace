@@ -1,0 +1,10 @@
+run_id: R004-baseline
+task_id: T004
+sandbox: baseline
+command: issue_harness --issue 21055 --node current-hermes-agent
+input_summary: Use Hermes-Agent issue #21055 as the simulation input for the current behavior node.
+output_summary: Baseline can detect a TypeError only after the malformed argument reaches runtime operations.
+failure_detected: True
+error_category: malformed_output
+recovery_hint_quality: 1
+notes: Current Hermes-Agent behavior on issue input. Recovery hint quality 1: generic or weak hint.

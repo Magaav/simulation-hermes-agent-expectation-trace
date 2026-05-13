@@ -1,0 +1,10 @@
+run_id: R006-expectation_trace
+task_id: T006
+sandbox: expectation_trace
+command: issue_harness --issue 21193 --node patched-expectation-trace
+input_summary: Use the same issue #21193 as input, but run it through the patched second-node observer.
+output_summary: Patched second node classified secret_leak_risk and produced an issue-specific recovery hint.
+failure_detected: True
+error_category: secret_leak_risk
+recovery_hint_quality: 2
+notes: Second-node patch used issue input, not issue prediction. Recovery hint quality 2: useful but incomplete hint.

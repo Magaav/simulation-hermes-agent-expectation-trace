@@ -1,0 +1,47 @@
+{
+  "title": "Expectation Trace: A Minimal Runtime Surprise Layer for Hermes-Agent",
+  "research_question": "Can a LeWorldModel-inspired expectation trace observer produce clearer fixture-level issue diagnostics when added to a second node and compared against a baseline representation on the same fixed issue inputs?",
+  "hypothesis": "A lightweight expectation trace observer may make issue-derived runtime mismatches more observable and produce more specific fixture-level recovery hints than the baseline representation.",
+  "claim_boundary": [
+    "This does not implement the full LeWorldModel paper.",
+    "This does not establish that Hermes-Agent has a neural world model.",
+    "This does not forecast or discover issues.",
+    "GitHub issues and PR-backed regression reports are inputs to the simulation.",
+    "This evaluates a minimal runtime observation artifact patched into the second node.",
+    "Results are preliminary and limited to the selected issue inputs."
+  ],
+  "method_summary": "Two nodes were compared on the same fixed issue inputs: a baseline representation versus a patched second node with the expectation trace observer enabled. The paper inspiration is used only to motivate expected-vs-actual surprise scoring.",
+  "sandboxes": [
+    {
+      "name": "baseline",
+      "path": "/local/simulation/hermes-baseline",
+      "description": "Baseline representation derived from selected issue and PR evidence; unpatched for Expectation Trace."
+    },
+    {
+      "name": "expectation_trace",
+      "path": "/local/simulation/hermes-expectation-trace",
+      "description": "Second node patched with a measurement-only expectation trace observer for expected-vs-actual transition tracing, surprise scoring, error categorization, and recovery hints."
+    }
+  ],
+  "input_selection_policy": {
+    "source": "Hermes-Agent GitHub issues, GitHub PRs that close issues, local regression references, and release-linked issue evidence",
+    "criteria": [
+      "runtime/tool/provider failure relevance",
+      "issue has explicit expected versus actual behavior or linked patch evidence",
+      "local simulation can be bounded and safe",
+      "useful to maintainers",
+      "small enough for the first issue-driven benchmark"
+    ],
+    "honesty_note": "Inputs are issue-derived, but most were converted into bounded fixtures rather than replayed end to end in production."
+  },
+  "metrics_defined": [
+    "failure_detection_rate",
+    "recovery_hint_quality",
+    "time_to_diagnosis_steps",
+    "surprise_score",
+    "surprise_level",
+    "secret_redaction_passed",
+    "jsonl_export_valid",
+    "artifact_validation_checks_passed"
+  ]
+}

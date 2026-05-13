@@ -1,0 +1,158 @@
+[
+  {
+    "task_id": "T001",
+    "category": "context_mismatch",
+    "baseline": {
+      "run_id": "R001-baseline",
+      "success": true,
+      "failure_detected": false,
+      "error_category": "unknown",
+      "recovery_hint_quality": 0,
+      "time_to_diagnosis_steps": 4
+    },
+    "expectation_trace": {
+      "run_id": "R001-expectation_trace",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "context_mismatch",
+      "recovery_hint_quality": 3,
+      "time_to_diagnosis_steps": 1,
+      "max_surprise_score": 0.7,
+      "dominant_surprise_level": "high"
+    },
+    "winner": "expectation_trace",
+    "interpretation": "Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence.",
+    "evidence_strength": "medium",
+    "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
+  },
+  {
+    "task_id": "T002",
+    "category": "platform_error",
+    "baseline": {
+      "run_id": "R002-baseline",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "platform_error",
+      "recovery_hint_quality": 1,
+      "time_to_diagnosis_steps": 3
+    },
+    "expectation_trace": {
+      "run_id": "R002-expectation_trace",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "platform_error",
+      "recovery_hint_quality": 3,
+      "time_to_diagnosis_steps": 1,
+      "max_surprise_score": 0.72,
+      "dominant_surprise_level": "high"
+    },
+    "winner": "expectation_trace",
+    "interpretation": "Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence.",
+    "evidence_strength": "medium",
+    "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
+  },
+  {
+    "task_id": "T003",
+    "category": "auth_missing",
+    "baseline": {
+      "run_id": "R003-baseline",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "auth_missing",
+      "recovery_hint_quality": 1,
+      "time_to_diagnosis_steps": 4
+    },
+    "expectation_trace": {
+      "run_id": "R003-expectation_trace",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "auth_missing",
+      "recovery_hint_quality": 3,
+      "time_to_diagnosis_steps": 1,
+      "max_surprise_score": 0.86,
+      "dominant_surprise_level": "high"
+    },
+    "winner": "expectation_trace",
+    "interpretation": "Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence.",
+    "evidence_strength": "high",
+    "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
+  },
+  {
+    "task_id": "T004",
+    "category": "malformed_output",
+    "baseline": {
+      "run_id": "R004-baseline",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "malformed_output",
+      "recovery_hint_quality": 1,
+      "time_to_diagnosis_steps": 3
+    },
+    "expectation_trace": {
+      "run_id": "R004-expectation_trace",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "malformed_output",
+      "recovery_hint_quality": 3,
+      "time_to_diagnosis_steps": 1,
+      "max_surprise_score": 0.76,
+      "dominant_surprise_level": "high"
+    },
+    "winner": "expectation_trace",
+    "interpretation": "Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence.",
+    "evidence_strength": "medium",
+    "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
+  },
+  {
+    "task_id": "T005",
+    "category": "empty_output",
+    "baseline": {
+      "run_id": "R005-baseline",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "empty_output",
+      "recovery_hint_quality": 1,
+      "time_to_diagnosis_steps": 3
+    },
+    "expectation_trace": {
+      "run_id": "R005-expectation_trace",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "empty_output",
+      "recovery_hint_quality": 2,
+      "time_to_diagnosis_steps": 1,
+      "max_surprise_score": 0.74,
+      "dominant_surprise_level": "high"
+    },
+    "winner": "expectation_trace",
+    "interpretation": "Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence.",
+    "evidence_strength": "low",
+    "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
+  },
+  {
+    "task_id": "T006",
+    "category": "secret_leak_risk",
+    "baseline": {
+      "run_id": "R006-baseline",
+      "success": true,
+      "failure_detected": false,
+      "error_category": "unknown",
+      "recovery_hint_quality": 0,
+      "time_to_diagnosis_steps": 4
+    },
+    "expectation_trace": {
+      "run_id": "R006-expectation_trace",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "secret_leak_risk",
+      "recovery_hint_quality": 2,
+      "time_to_diagnosis_steps": 1,
+      "max_surprise_score": 0.8,
+      "dominant_surprise_level": "high"
+    },
+    "winner": "expectation_trace",
+    "interpretation": "Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence.",
+    "evidence_strength": "low",
+    "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
+  }
+]

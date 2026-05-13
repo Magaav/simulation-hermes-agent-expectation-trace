@@ -1,0 +1,45 @@
+{
+  "project": "simulation-hermes-agent-expectation-trace",
+  "title": "Expectation Trace Lab",
+  "subtitle": "Issue-driven JEPA-inspired runtime surprise scoring for Hermes-Agent",
+  "created_at": "2026-05-13T19:39:49Z",
+  "repo_under_test": "https://github.com/NousResearch/hermes-agent",
+  "paper_inspiration": "https://arxiv.org/abs/2603.19312",
+  "local_paths": {
+    "root": "/local/simulation/simulation-hermes-agent-expectation-trace",
+    "lab_db": "/local/simulation/simulation-hermes-agent-expectation-trace/lab_db",
+    "baseline_sandbox": "/local/simulation/hermes-baseline",
+    "expectation_trace_sandbox": "/local/simulation/hermes-expectation-trace"
+  },
+  "artifacts": {
+    "study": "lab_db/study.json",
+    "tasks": "lab_db/tasks.json",
+    "issue_inputs": "lab_db/issue_inputs.json",
+    "runs": "lab_db/runs.jsonl",
+    "traces": "lab_db/traces.jsonl",
+    "comparisons": "lab_db/comparisons.json",
+    "metrics": "lab_db/metrics.json",
+    "conclusions": "lab_db/conclusions.json",
+    "chart_spec": "lab_db/chart_spec.json",
+    "dashboard_prompt": "lab_db/dashboard_prompt.md",
+    "data_dictionary": "lab_db/data_dictionary.md",
+    "readme": "README.md",
+    "validation": "VALIDATION.md",
+    "second_node_patch": "patches/expectation_trace_second_node.py",
+    "paper": "paper.md",
+    "results": "results.md",
+    "pr_proposal": "pr_proposal.md",
+    "interview_notes": "interview_notes.md"
+  },
+  "status": "partial",
+  "honesty_note": "The lab database is complete as a file package, but the experiment is partial: issues were used as bounded simulation inputs, pytest was unavailable, and the second-node patch is a simulation artifact rather than an upstream Hermes-Agent patch.",
+  "methodology_note": "GitHub issues and PR-backed reports are fixed input fixtures. The lab does not predict issues.",
+  "metric_caution": "Failure detection rates, recovery-hint quality, and surprise scores are fixture-level heuristic annotations, not production reliability measurements or statistical estimates.",
+  "claim_boundary": [
+    "Does not implement LeWorldModel.",
+    "Does not prove world-model behavior.",
+    "Does not prove production recovery.",
+    "Does not evaluate autonomous planning.",
+    "Does not generalize beyond the six Lab v0 fixtures."
+  ]
+}

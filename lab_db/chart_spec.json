@@ -1,0 +1,126 @@
+{
+  "dashboard_title": "Expectation Trace Lab",
+  "subtitle": "Issue-driven JEPA-inspired runtime surprise scoring for Hermes-Agent",
+  "charts": [
+    {
+      "id": "overview_cards",
+      "type": "metric_cards",
+      "title": "Overview",
+      "data_source": "metrics.json",
+      "fields": [
+        "total_tasks",
+        "github_issue_tasks",
+        "total_expectation_traces",
+        "failure_detection_rate.baseline",
+        "failure_detection_rate.expectation_trace",
+        "avg_recovery_hint_quality.baseline",
+        "avg_recovery_hint_quality.expectation_trace",
+        "tests.passed",
+        "tests.failed"
+      ]
+    },
+    {
+      "id": "issue_input_table",
+      "type": "table",
+      "title": "Issue Inputs",
+      "data_source": "issue_inputs.json",
+      "columns": [
+        "issue_number",
+        "title",
+        "category",
+        "source_basis",
+        "evidence_strength",
+        "issue_url"
+      ]
+    },
+    {
+      "id": "surprise_distribution",
+      "type": "bar_chart",
+      "title": "Surprise Distribution",
+      "data_source": "metrics.json",
+      "x": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "y": "surprise_distribution"
+    },
+    {
+      "id": "sandbox_comparison",
+      "type": "grouped_bar_chart",
+      "title": "Current Node vs Patched Second Node",
+      "data_source": "metrics.json",
+      "metrics": [
+        "failure_detection_rate",
+        "avg_recovery_hint_quality",
+        "avg_time_to_diagnosis_steps"
+      ]
+    },
+    {
+      "id": "task_comparison_table",
+      "type": "table",
+      "title": "Per-Issue Comparison",
+      "data_source": "comparisons.json",
+      "columns": [
+        "task_id",
+        "category",
+        "baseline.error_category",
+        "expectation_trace.error_category",
+        "expectation_trace.max_surprise_score",
+        "winner",
+        "evidence_strength"
+      ]
+    },
+    {
+      "id": "expected_vs_actual_examples",
+      "type": "trace_cards",
+      "title": "Expected vs Actual Issue Examples",
+      "data_source": "traces.jsonl",
+      "fields": [
+        "task_id",
+        "action.name",
+        "expected_after",
+        "actual_after",
+        "surprise_score",
+        "surprise_level",
+        "recovery_hint"
+      ]
+    },
+    {
+      "id": "failure_taxonomy",
+      "type": "bar_chart",
+      "title": "Issue Failure Taxonomy",
+      "data_source": "traces.jsonl",
+      "group_by": "error_category",
+      "value": "count"
+    },
+    {
+      "id": "conclusions_panel",
+      "type": "text_panel",
+      "title": "Scientific Conclusion",
+      "data_source": "conclusions.json",
+      "fields": [
+        "main_conclusion",
+        "scientific_honesty",
+        "threats_to_validity",
+        "recommended_next_experiment"
+      ]
+    }
+  ],
+  "visual_style": {
+    "tone": "serious scientific dashboard",
+    "avoid": [
+      "hype",
+      "overclaiming",
+      "marketing-only language",
+      "claims that issues were predicted"
+    ],
+    "emphasize": [
+      "issue inputs",
+      "two-node comparison",
+      "measured uncertainty",
+      "clear limitations",
+      "reproducible evidence"
+    ]
+  }
+}

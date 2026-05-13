@@ -1,0 +1,10 @@
+run_id: R006-baseline
+task_id: T006
+sandbox: baseline
+command: issue_harness --issue 21193 --node current-hermes-agent
+input_summary: Use Hermes-Agent issue #21193 as the simulation input for the current behavior node.
+output_summary: Baseline has no issue-level guarantee that new instrumentation will redact token-shaped values.
+failure_detected: False
+error_category: unknown
+recovery_hint_quality: 0
+notes: Current Hermes-Agent behavior on issue input. Recovery hint quality 0: no actionable recovery hint.

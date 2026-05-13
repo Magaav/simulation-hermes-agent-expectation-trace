@@ -1,0 +1,44 @@
+{
+  "main_conclusion": "On the six fixed Lab v0 fixtures, the LeWorldModel-inspired expectation trace observer produced higher fixture-level diagnostic and recovery-hint scores than the baseline representation. This is a bounded simulation result, not a product benchmark, a production superiority claim, or an implementation of LeWorldModel.",
+  "secondary_conclusions": [
+    "The strongest case was issue #20982 because the issue body provides expected behavior, actual behavior, root cause, and affected files.",
+    "The second node scored highest when the baseline representation surfaced the symptom later than the violated dispatcher, provider, or tool-boundary precondition.",
+    "Issue-input traces are inspectable because they separate issue evidence, run records, transition records, comparisons, and scientific interpretation."
+  ],
+  "what_worked": [
+    "Issues became first-class fixed simulation inputs rather than model-generated targets.",
+    "The patched second node produced issue-specific recovery hints from expected-vs-actual mismatches.",
+    "The lab database now records a concrete second-node patch artifact.",
+    "Secret redaction remains a required trace export postcondition."
+  ],
+  "what_did_not_work": [
+    "The run did not replay every issue end to end in a full production Hermes-Agent environment.",
+    "Some issue inputs are PR-backed or release-linked rather than standalone issue bodies.",
+    "Pytest was unavailable, so targeted regression suites could not be executed.",
+    "The scoring model remains heuristic."
+  ],
+  "inconclusive_findings": [
+    "Whether the observer changes autonomous recovery after diagnosis remains untested.",
+    "Whether surprise_score correlates with maintainer-prioritized severity is unknown.",
+    "Whether the second-node observer should be a plugin, core debug flag, or standalone harness requires maintainer input."
+  ],
+  "threats_to_validity": [
+    "Small task set",
+    "Heuristic scoring",
+    "Issue reports converted into bounded fixtures may not match production replay",
+    "Limited runtime budget",
+    "No learned latent model",
+    "No CEM planning",
+    "No long-horizon evaluation",
+    "Pytest unavailable in this environment",
+    "Second-node patch is a simulation artifact, not an upstream Hermes-Agent code change"
+  ],
+  "scientific_honesty": "The fixture-level data is consistent with the hypothesis that expectation tracing can improve observability within this bounded simulation. It does not support claims of issue forecasting, full LeWorldModel behavior, learned latent dynamics, production superiority, or planning gains.",
+  "recommended_next_experiment": "Select 10 to 20 live or recently closed Hermes-Agent issues, build executable reproduction fixtures for both nodes, add the observer only to the second node, run tests under pytest, and ask maintainers to rate recovery-hint usefulness.",
+  "recommended_pr_scope": {
+    "title": "Evaluate optional issue-driven Expectation Trace for tool-call surprise scoring",
+    "scope": "measurement-only",
+    "confidence": "medium",
+    "why": "The fixed issue-input design is inspectable, but evidence is still fixture-based and should remain a measurement-only evaluation artifact until maintainers review it."
+  }
+}

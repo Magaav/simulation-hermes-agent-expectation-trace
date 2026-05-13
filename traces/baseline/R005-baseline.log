@@ -1,0 +1,10 @@
+run_id: R005-baseline
+task_id: T005
+sandbox: baseline
+command: issue_harness --issue 19628 --node current-hermes-agent
+input_summary: Use Hermes-Agent issue #19628 as the simulation input for the current behavior node.
+output_summary: Baseline empty-output behavior is discovered late at cron execution time.
+failure_detected: True
+error_category: empty_output
+recovery_hint_quality: 1
+notes: Current Hermes-Agent behavior on issue input. Recovery hint quality 1: generic or weak hint.

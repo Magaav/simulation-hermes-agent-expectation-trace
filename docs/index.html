@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expectation Trace Lab v0</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --ink: #18212f;
+      --muted: #596579;
+      --line: #d9dee7;
+      --accent: #1f6feb;
+      --caution: #7c2d12;
+      --caution-bg: #fff7ed;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
+
+    header {
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .banner {
+      border: 1px solid #fed7aa;
+      background: var(--caution-bg);
+      color: var(--caution);
+      padding: 12px 14px;
+      border-radius: 6px;
+      font-weight: 650;
+      margin: 18px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0 24px;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 14px;
+      min-height: 104px;
+    }
+
+    .metric .label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .metric .value {
+      font-size: 26px;
+      font-weight: 720;
+      letter-spacing: 0;
+    }
+
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 18px;
+      margin-top: 16px;
+      overflow: hidden;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 780px;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: #334155;
+      background: #f8fafc;
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 1px 4px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .error {
+      border-color: #fecaca;
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    @media (max-width: 860px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 540px) {
+      main {
+        width: min(100% - 20px, 1180px);
+        padding-top: 22px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Expectation Trace Lab v0</h1>
+      <p>Issue-fixture simulation harness for Hermes-Agent recovery diagnostics.</p>
+      <div class="banner">Bounded simulation artifact. Not a production benchmark. Not proof of runtime superiority.</div>
+    </header>
+
+    <div id="status" class="banner">Loading local dashboard data...</div>
+
+    <section aria-labelledby="overview-title">
+      <h2 id="overview-title">Overview</h2>
+      <div class="grid" id="metrics-grid"></div>
+    </section>
+
+    <section aria-labelledby="comparison-title">
+      <h2 id="comparison-title">Per-Fixture Comparison</h2>
+      <p>The comparison label is a fixture-level heuristic result, not a product benchmark.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Category</th>
+              <th>Baseline Detection</th>
+              <th>Observer Detection</th>
+              <th>Baseline Hint Quality</th>
+              <th>Observer Hint Quality</th>
+              <th>Max Surprise</th>
+              <th>Evidence</th>
+            </tr>
+          </thead>
+          <tbody id="comparison-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="issues-title">
+      <h2 id="issues-title">Issue Fixture Sources</h2>
+      <p>Issues and PRs are fixed input fixtures. They are not predicted or discovered by the observer.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Issue / PR</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Source Basis</th>
+              <th>Evidence</th>
+            </tr>
+          </thead>
+          <tbody id="issues-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="traces-title">
+      <h2 id="traces-title">Observer Traces</h2>
+      <p>Expected-vs-actual rows emitted only by the patched second node.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Trace</th>
+              <th>Task</th>
+              <th>Action</th>
+              <th>Expected</th>
+              <th>Actual</th>
+              <th>Surprise</th>
+              <th>Hint</th>
+            </tr>
+          </thead>
+          <tbody id="traces-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="limits-title">
+      <h2 id="limits-title">Limitations</h2>
+      <ul>
+        <li>Fixed input fixtures, not issue prediction.</li>
+        <li>Fixture-level heuristic scores, not production measurements.</li>
+        <li>Baseline representation, not full production replay.</li>
+        <li>LeWorldModel-inspired expectation trace observer, not a full LeWorldModel implementation.</li>
+        <li>No claim of runtime superiority, planning gains, or production recovery.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    const fmtRate = (value) => Number(value ?? 0).toFixed(2);
+    const text = (value) => String(value ?? "");
+
+    function cell(value) {
+      const td = document.createElement("td");
+      td.textContent = text(value);
+      return td;
+    }
+
+    function linkCell(label, href) {
+      const td = document.createElement("td");
+      if (href) {
+        const a = document.createElement("a");
+        a.href = href;
+        a.textContent = label;
+        a.rel = "noreferrer";
+        td.appendChild(a);
+      } else {
+        td.textContent = label;
+      }
+      return td;
+    }
+
+    function metricCard(label, value) {
+      const card = document.createElement("div");
+      card.className = "metric";
+      const labelEl = document.createElement("div");
+      labelEl.className = "label";
+      labelEl.textContent = label;
+      const valueEl = document.createElement("div");
+      valueEl.className = "value";
+      valueEl.textContent = value;
+      card.append(labelEl, valueEl);
+      return card;
+    }
+
+    async function loadJson(path) {
+      const response = await fetch(path);
+      if (!response.ok) throw new Error(`${path}: ${response.status}`);
+      return response.json();
+    }
+
+    async function loadJsonl(path) {
+      const response = await fetch(path);
+      if (!response.ok) throw new Error(`${path}: ${response.status}`);
+      const body = await response.text();
+      return body.split(/\r?\n/).filter(Boolean).map((line) => JSON.parse(line));
+    }
+
+    function renderMetrics(metrics) {
+      const grid = document.getElementById("metrics-grid");
+      grid.replaceChildren(
+        metricCard("Fixtures", metrics.total_tasks),
+        metricCard("Observer Traces", metrics.total_expectation_traces),
+        metricCard("Baseline Detection", fmtRate(metrics.failure_detection_rate?.baseline)),
+        metricCard("Observer Detection", fmtRate(metrics.failure_detection_rate?.expectation_trace)),
+        metricCard("Baseline Hint Quality", fmtRate(metrics.avg_recovery_hint_quality?.baseline)),
+        metricCard("Observer Hint Quality", fmtRate(metrics.avg_recovery_hint_quality?.expectation_trace)),
+        metricCard("Artifact Checks Passed", metrics.tests?.passed ?? 0),
+        metricCard("Artifact Checks Failed", metrics.tests?.failed ?? 0)
+      );
+    }
+
+    function renderComparisons(comparisons) {
+      const body = document.getElementById("comparison-body");
+      body.replaceChildren(...comparisons.map((row) => {
+        const tr = document.createElement("tr");
+        tr.append(
+          cell(row.task_id),
+          cell(row.category),
+          cell(row.baseline?.failure_detected),
+          cell(row.expectation_trace?.failure_detected),
+          cell(row.baseline?.recovery_hint_quality),
+          cell(row.expectation_trace?.recovery_hint_quality),
+          cell(row.expectation_trace?.max_surprise_score),
+          cell(row.evidence_strength)
+        );
+        return tr;
+      }));
+    }
+
+    function renderIssues(issues) {
+      const body = document.getElementById("issues-body");
+      body.replaceChildren(...issues.map((issue) => {
+        const tr = document.createElement("tr");
+        tr.append(
+          linkCell(`#${issue.issue_number}`, issue.issue_url),
+          cell(issue.title),
+          cell(issue.category),
+          cell(issue.source_basis),
+          linkCell("evidence", issue.evidence_url || issue.issue_url)
+        );
+        return tr;
+      }));
+    }
+
+    function renderTraces(traces) {
+      const body = document.getElementById("traces-body");
+      body.replaceChildren(...traces.map((trace) => {
+        const tr = document.createElement("tr");
+        tr.append(
+          cell(trace.trace_id),
+          cell(trace.task_id),
+          cell(trace.action?.name),
+          cell(trace.expected_after),
+          cell(trace.actual_after),
+          cell(`${fmtRate(trace.surprise_score)} ${trace.surprise_level}`),
+          cell(trace.recovery_hint)
+        );
+        return tr;
+      }));
+    }
+
+    async function main() {
+      try {
+        const [metrics, comparisons, issues, traces] = await Promise.all([
+          loadJson("data/metrics.json"),
+          loadJson("data/comparisons.json"),
+          loadJson("data/issue_inputs.json"),
+          loadJsonl("data/traces.jsonl")
+        ]);
+        renderMetrics(metrics);
+        renderComparisons(comparisons);
+        renderIssues(issues);
+        renderTraces(traces);
+        const status = document.getElementById("status");
+        status.textContent = "Loaded local Lab v0 files from dashboard/data.";
+      } catch (error) {
+        const status = document.getElementById("status");
+        status.classList.add("error");
+        status.textContent = `Dashboard data failed to load: ${error.message}`;
+      }
+    }
+
+    main();
+  </script>
+</body>
+</html>
