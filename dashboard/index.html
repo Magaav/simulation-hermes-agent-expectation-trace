@@ -3,19 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Expectation Trace Lab v1</title>
+  <title>Issue-Fixture Recovery Diagnostics for Hermes-Agent</title>
   <style>
     :root {
       color-scheme: light;
-      --bg: #f7f8fa;
-      --panel: #ffffff;
-      --ink: #18212f;
-      --muted: #596579;
-      --line: #d9dee7;
-      --accent: #1f6feb;
-      --accent-2: #0f766e;
-      --caution: #7c2d12;
-      --caution-bg: #fff7ed;
+      --bg: #fbfaf7;
+      --paper: #fffefb;
+      --ink: #111111;
+      --muted: #565656;
+      --line: #d8d5cc;
+      --soft-line: #ece8dd;
+      --soft: #f6f3eb;
+      --baseline: #9a9a9a;
+      --observer: #1d4f91;
+      --caution: #6f3d13;
+      --caution-bg: #fff7e8;
     }
 
     * {
@@ -24,33 +26,82 @@
 
     body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Georgia, "Times New Roman", serif;
       background: var(--bg);
       color: var(--ink);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     main {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 32px 0 48px;
+      padding: 28px 0 52px;
     }
 
-    header {
-      margin-bottom: 20px;
+    a {
+      color: #183f73;
+    }
+
+    .paper-front {
+      min-height: 92vh;
+      padding: 28px 0 34px;
+    }
+
+    .rule {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 0 0 26px;
+    }
+
+    .title-block {
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
     }
 
     h1 {
-      margin: 0 0 8px;
-      font-size: 30px;
-      line-height: 1.15;
+      margin: 0;
+      color: #050505;
+      font-size: clamp(34px, 5vw, 58px);
+      font-weight: 600;
+      line-height: 1.05;
       letter-spacing: 0;
     }
 
-    h2 {
-      margin: 0 0 14px;
-      font-size: 18px;
-      letter-spacing: 0;
+    .subtitle {
+      max-width: 760px;
+      margin: 14px auto 0;
+      color: #333333;
+      font-size: clamp(17px, 2.4vw, 21px);
+    }
+
+    .meta {
+      margin: 20px auto 22px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .meta span {
+      display: inline-block;
+      margin: 0 8px;
+    }
+
+    .abstract,
+    .final-conclusion,
+    .claim-boundary {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .paper-heading {
+      margin: 0 0 8px;
+      color: #111111;
+      font-size: 15px;
+      font-variant: small-caps;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-align: center;
     }
 
     p {
@@ -58,18 +109,99 @@
       color: var(--muted);
     }
 
-    a {
-      color: var(--accent);
+    .abstract p,
+    .final-conclusion p {
+      color: #222222;
+      font-size: 16px;
+      text-align: left;
     }
 
-    .banner {
-      border: 1px solid #fed7aa;
+    .final-conclusion {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--soft-line);
+    }
+
+    .claim-boundary {
+      margin-top: 18px;
+      border: 1px solid #ead7b7;
       background: var(--caution-bg);
       color: var(--caution);
-      padding: 12px 14px;
-      border-radius: 6px;
-      font-weight: 650;
-      margin: 18px 0;
+      padding: 11px 14px;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .summary-chart {
+      max-width: 980px;
+      margin: 24px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .summary-chart h2 {
+      margin: 0 0 4px;
+      color: #111111;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0;
+    }
+
+    .summary-chart svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 10px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    .chart-caption {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .status-line {
+      max-width: 980px;
+      margin: 16px auto 0;
+      color: var(--muted);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .status-line.error {
+      color: #991b1b;
+    }
+
+    .details-rule {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 28px 0 0;
+    }
+
+    .details-heading {
+      margin: 28px 0 10px;
+      text-align: center;
+    }
+
+    .details-heading h2 {
+      margin: 0;
+      color: #111111;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+
+    .details-heading p {
+      max-width: 760px;
+      margin: 6px auto 0;
+      text-align: center;
     }
 
     .grid,
@@ -77,6 +209,7 @@
       display: grid;
       gap: 12px;
       margin: 18px 0 24px;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     .grid {
@@ -88,14 +221,15 @@
     }
 
     .metric,
-    .chart {
-      background: var(--panel);
+    .chart,
+    section {
+      background: var(--paper);
       border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 14px;
     }
 
-    .metric {
+    .metric,
+    .chart {
+      padding: 14px;
       min-height: 104px;
     }
 
@@ -107,6 +241,7 @@
     }
 
     .metric .value {
+      color: #111111;
       font-size: 26px;
       font-weight: 720;
       letter-spacing: 0;
@@ -114,8 +249,8 @@
 
     .chart-title {
       margin-bottom: 12px;
+      color: #2f2f2f;
       font-weight: 700;
-      color: #334155;
     }
 
     .bar-row {
@@ -128,33 +263,45 @@
 
     .bar-track {
       height: 12px;
-      border-radius: 999px;
-      background: #e8edf5;
+      background: #e9e7e1;
       overflow: hidden;
     }
 
     .bar-fill {
       height: 100%;
-      border-radius: inherit;
-      background: var(--accent);
+      background: var(--baseline);
       min-width: 2px;
     }
 
     .bar-fill.observer {
-      background: var(--accent-2);
+      background: var(--observer);
     }
 
     section {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 6px;
       padding: 18px;
       margin-top: 16px;
       overflow: hidden;
     }
 
+    .paper-front section {
+      background: transparent;
+      border: 0;
+      padding: 0;
+      margin-top: 0;
+      overflow: visible;
+    }
+
+    section h2 {
+      margin: 0 0 14px;
+      color: #111111;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+
     .table-wrap {
       overflow-x: auto;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     table {
@@ -166,15 +313,15 @@
 
     th,
     td {
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--soft-line);
       padding: 10px;
       text-align: left;
       vertical-align: top;
     }
 
     th {
-      color: #334155;
-      background: #f8fafc;
+      color: #272727;
+      background: var(--soft);
       font-weight: 700;
     }
 
@@ -185,9 +332,8 @@
     code {
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-size: 0.92em;
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
-      border-radius: 4px;
+      background: var(--soft);
+      border: 1px solid var(--soft-line);
       padding: 1px 4px;
     }
 
@@ -197,41 +343,80 @@
       color: var(--muted);
     }
 
-    .error {
-      border-color: #fecaca;
-      background: #fef2f2;
-      color: #991b1b;
-    }
-
     @media (max-width: 960px) {
       .grid,
       .chart-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .paper-front {
+        min-height: auto;
+      }
     }
 
     @media (max-width: 620px) {
       main {
-        width: min(100% - 20px, 1180px);
-        padding-top: 22px;
+        width: min(100% - 20px, 1120px);
+        padding-top: 20px;
       }
 
       .grid,
       .chart-grid {
         grid-template-columns: 1fr;
       }
+
+      .meta span {
+        display: block;
+        margin: 2px 0;
+      }
     }
   </style>
 </head>
 <body>
   <main>
-    <header>
-      <h1>Expectation Trace Lab v1</h1>
-      <p>Controlled issue-fixture simulation harness for Hermes-Agent recovery diagnostics.</p>
-      <div class="banner">Bounded simulation artifact. Not a production benchmark. Not proof of runtime superiority.</div>
-    </header>
+    <article class="paper-front" aria-labelledby="paper-title">
+      <hr class="rule">
+      <header class="title-block">
+        <h1 id="paper-title">Issue-Fixture Recovery Diagnostics for Hermes-Agent</h1>
+        <p class="subtitle">A bounded Lab v1 simulation artifact using real issue and PR-linked fixtures.</p>
+        <div class="meta" aria-label="Author and repository metadata">
+          <span>Victor de Genaro</span>
+          <span>Hermes-Agent recovery eval lab</span>
+          <span>Repo: <a href="https://github.com/Magaav/simulation-hermes-agent-expectation-trace">Magaav/simulation-hermes-agent-expectation-trace</a></span>
+          <span>Dashboard: <a href="https://magaav.github.io/simulation-hermes-agent-expectation-trace/">GitHub Pages</a></span>
+        </div>
+      </header>
 
-    <div id="status" class="banner">Loading local dashboard data...</div>
+      <section class="abstract" aria-labelledby="abstract-title">
+        <h2 class="paper-heading" id="abstract-title">Abstract</h2>
+        <p>This Lab v1 artifact converts real Hermes-Agent GitHub issues and PR-linked regressions into fixed input fixtures for recovery-diagnostic evaluation. It compares a baseline representation against a second node with a LeWorldModel-inspired expectation trace observer. The observer records expected-vs-actual transitions, heuristic surprise scores, failure categories, and recovery hints. The purpose is not to establish runtime superiority, but to test whether issue history can become a reusable evaluation surface for agent recovery behavior.</p>
+      </section>
+
+      <section class="final-conclusion" aria-labelledby="conclusion-title">
+        <h2 class="paper-heading" id="conclusion-title">Final Conclusion</h2>
+        <p>On 12 fixed issue/PR-linked fixtures, the expectation trace observer produced higher fixture-level heuristic scores than the baseline representation: failure detection changed from 0.83 to 1.00, average recovery-hint quality from 0.92 to 2.75, and average diagnosis steps decreased from 3.67 to 1.00. These results are bounded to the selected fixtures and scoring rubric. They are not production reliability measurements, not statistical evidence, and not evidence of a full LeWorldModel implementation.</p>
+      </section>
+
+      <div class="claim-boundary">
+        <strong>Claim Boundary:</strong> Bounded simulation artifact. Not production proof. Not runtime superiority. Not full LeWorldModel. This page reports fixture-level heuristic scores only. It does not claim issue prediction, production superiority, statistical significance, runtime superiority, or a full LeWorldModel implementation.
+      </div>
+
+      <section class="summary-chart" aria-labelledby="summary-chart-title">
+        <h2 id="summary-chart-title">Lab v1 Summary</h2>
+        <svg id="summary-svg" viewBox="0 0 960 390" role="img" aria-labelledby="summary-chart-title summary-chart-desc">
+          <desc id="summary-chart-desc">Grouped bar chart comparing baseline representation and expectation trace observer on failure detection, recovery hint quality, and diagnosis steps.</desc>
+        </svg>
+        <p class="chart-caption">Fixture-level heuristic scores on 12 fixed Hermes-Agent issue / PR-linked inputs. For diagnosis steps, lower is better.</p>
+      </section>
+
+      <div id="status" class="status-line">Loading local dashboard data...</div>
+    </article>
+
+    <hr class="details-rule">
+    <div class="details-heading">
+      <h2>Detailed Dashboard Data</h2>
+      <p>Structured tables below expose the fixed fixtures, observer traces, and aggregate metrics used by the paper-style summary above.</p>
+    </div>
 
     <section aria-labelledby="overview-title">
       <h2 id="overview-title">Overview</h2>
@@ -346,6 +531,102 @@
         td.textContent = label;
       }
       return td;
+    }
+
+    function svgEl(name, attrs = {}) {
+      const element = document.createElementNS("http://www.w3.org/2000/svg", name);
+      Object.entries(attrs).forEach(([key, value]) => element.setAttribute(key, value));
+      return element;
+    }
+
+    function renderSummaryChart(metrics) {
+      const svg = document.getElementById("summary-svg");
+      const groups = [
+        {
+          label: "Failure Detection",
+          baseline: metrics.failure_detection_rate?.baseline ?? 0,
+          observer: metrics.failure_detection_rate?.expectation_trace ?? 0,
+          max: 1,
+          note: "higher is better"
+        },
+        {
+          label: "Recovery Hint Quality",
+          baseline: metrics.avg_recovery_hint_quality?.baseline ?? 0,
+          observer: metrics.avg_recovery_hint_quality?.expectation_trace ?? 0,
+          max: 3,
+          note: "0-3 rubric"
+        },
+        {
+          label: "Diagnosis Steps",
+          baseline: metrics.avg_time_to_diagnosis_steps?.baseline ?? 0,
+          observer: metrics.avg_time_to_diagnosis_steps?.expectation_trace ?? 0,
+          max: 4,
+          note: "lower is better"
+        }
+      ];
+
+      svg.replaceChildren();
+      svg.appendChild(svgEl("rect", { x: 0, y: 0, width: 960, height: 390, fill: "#fffefb" }));
+      svg.appendChild(svgEl("line", { x1: 86, y1: 306, x2: 900, y2: 306, stroke: "#d8d5cc", "stroke-width": 1 }));
+      svg.appendChild(svgEl("line", { x1: 86, y1: 88, x2: 86, y2: 306, stroke: "#d8d5cc", "stroke-width": 1 }));
+
+      const legend = [
+        ["Baseline representation", "#9a9a9a", 590],
+        ["Expectation trace observer", "#1d4f91", 750]
+      ];
+      legend.forEach(([label, fill, x]) => {
+        svg.appendChild(svgEl("rect", { x, y: 38, width: 12, height: 12, fill }));
+        const textEl = svgEl("text", { x: Number(x) + 18, y: 49, fill: "#333333", "font-size": 13, "font-family": "system-ui, sans-serif" });
+        textEl.textContent = label;
+        svg.appendChild(textEl);
+      });
+
+      groups.forEach((group, index) => {
+        const groupX = 150 + index * 260;
+        const baseHeight = Math.round((group.baseline / group.max) * 198);
+        const obsHeight = Math.round((group.observer / group.max) * 198);
+        const bars = [
+          { x: groupX, value: group.baseline, height: baseHeight, fill: "#9a9a9a" },
+          { x: groupX + 76, value: group.observer, height: obsHeight, fill: "#1d4f91" }
+        ];
+
+        bars.forEach((bar) => {
+          const y = 306 - Math.max(bar.height, 2);
+          svg.appendChild(svgEl("rect", { x: bar.x, y, width: 48, height: Math.max(bar.height, 2), fill: bar.fill }));
+          const label = svgEl("text", {
+            x: bar.x + 24,
+            y: y - 9,
+            fill: "#111111",
+            "font-size": 16,
+            "font-family": "Georgia, Times New Roman, serif",
+            "text-anchor": "middle"
+          });
+          label.textContent = fmtRate(bar.value);
+          svg.appendChild(label);
+        });
+
+        const axisLabel = svgEl("text", {
+          x: groupX + 62,
+          y: 338,
+          fill: "#111111",
+          "font-size": 15,
+          "font-family": "Georgia, Times New Roman, serif",
+          "text-anchor": "middle"
+        });
+        axisLabel.textContent = group.label;
+        svg.appendChild(axisLabel);
+
+        const note = svgEl("text", {
+          x: groupX + 62,
+          y: 360,
+          fill: "#565656",
+          "font-size": 12,
+          "font-family": "system-ui, sans-serif",
+          "text-anchor": "middle"
+        });
+        note.textContent = group.note;
+        svg.appendChild(note);
+      });
     }
 
     function metricCard(label, value) {
@@ -512,13 +793,14 @@
           loadJson("data/issue_inputs.json"),
           loadJsonl("data/traces.jsonl")
         ]);
+        renderSummaryChart(metrics);
         renderMetrics(metrics);
         renderCharts(metrics);
         renderComparisons(comparisons);
         renderIssues(issues);
         renderTraces(traces);
         const status = document.getElementById("status");
-        status.textContent = "Loaded local Lab v1 files from dashboard/data.";
+        status.textContent = "Loaded Lab v1 data from local static files.";
       } catch (error) {
         const status = document.getElementById("status");
         status.classList.add("error");
