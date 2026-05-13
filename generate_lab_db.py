@@ -1096,28 +1096,6 @@ It is designed to support issue-fixture inspection, not to forecast issues, alte
 - No production recovery or planning gain is claimed.
 """,
     )
-    write_text(
-        ROOT / "interview_notes.md",
-        """# Interview Notes
-
-## Core Containment
-
-The experiment uses GitHub issues and PR-backed reports as fixed inputs. It must not frame Expectation Trace as issue forecasting or discovery.
-
-## Maintainer Questions
-
-- Which issue classes should become acceptable fixed simulation fixtures?
-- Should the second-node patch live as a plugin hook, a debug flag, or a harness-only wrapper?
-- What fields make an issue trace useful in a PR review?
-- Should maintainers rate recovery_hint_quality to calibrate the heuristic score?
-
-## Suggested Demo
-
-Pick one issue input, show the baseline representation, then show the patched second-node trace. Present the exact expected-vs-actual transition and recovery hint side by side.
-""",
-    )
-
-
 def main() -> None:
     created_at = utc_now()
     base_time = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(minutes=50)
@@ -1281,7 +1259,6 @@ inputs only.
             "paper": "paper.md",
             "results": "results.md",
             "pr_proposal": "pr_proposal.md",
-            "interview_notes": "interview_notes.md",
         },
         "status": "partial",
         "honesty_note": "The lab database is complete as a file package, but the experiment is partial: issues were used as bounded simulation inputs, pytest was unavailable, and the second-node patch is a simulation artifact rather than an upstream Hermes-Agent patch.",

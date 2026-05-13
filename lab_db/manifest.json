@@ -2,7 +2,7 @@
   "project": "simulation-hermes-agent-expectation-trace",
   "title": "Expectation Trace Lab v1",
   "subtitle": "Issue-fixture JEPA-inspired runtime observer for Hermes-Agent",
-  "created_at": "2026-05-13T20:05:27Z",
+  "created_at": "2026-05-13T20:26:30Z",
   "repo_under_test": "https://github.com/NousResearch/hermes-agent",
   "paper_inspiration": "https://arxiv.org/abs/2603.19312",
   "local_paths": {
@@ -29,8 +29,7 @@
     "second_node_patch": "patches/expectation_trace_second_node.py",
     "paper": "paper.md",
     "results": "results.md",
-    "pr_proposal": "pr_proposal.md",
-    "interview_notes": "interview_notes.md"
+    "pr_proposal": "pr_proposal.md"
   },
   "status": "partial",
   "honesty_note": "The lab database is complete as a file package, but the experiment is partial: issues were used as bounded simulation inputs, pytest was unavailable, and the second-node patch is a simulation artifact rather than an upstream Hermes-Agent patch.",
