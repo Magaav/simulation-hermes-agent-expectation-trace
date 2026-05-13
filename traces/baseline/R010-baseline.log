@@ -1,0 +1,10 @@
+run_id: R010-baseline
+task_id: T010
+sandbox: baseline
+command: issue_harness --issue 8340 --node baseline-representation
+input_summary: Use Hermes-Agent issue #8340 as the simulation input for the baseline representation.
+output_summary: Baseline representation surfaces a hang or timeout after command execution is already blocked.
+failure_detected: True
+error_category: platform_error
+recovery_hint_quality: 1
+notes: Baseline representation on issue input. Recovery hint quality 1: generic or weak hint.

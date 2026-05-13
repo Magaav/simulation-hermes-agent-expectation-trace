@@ -1,10 +1,10 @@
 run_id: R001-baseline
 task_id: T001
 sandbox: baseline
-command: issue_harness --issue 24154 --node current-hermes-agent
-input_summary: Use Hermes-Agent issue #24154 as the simulation input for the current behavior node.
+command: issue_harness --issue 24154 --node baseline-representation
+input_summary: Use Hermes-Agent issue #24154 as the simulation input for the baseline representation.
 output_summary: Baseline lacks a guaranteed runtime identity transition and may require user correction or terminal discovery.
 failure_detected: False
 error_category: unknown
 recovery_hint_quality: 0
-notes: Current Hermes-Agent behavior on issue input. Recovery hint quality 0: no actionable recovery hint.
+notes: Baseline representation on issue input. Recovery hint quality 0: no actionable recovery hint.

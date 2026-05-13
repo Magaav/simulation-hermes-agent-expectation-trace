@@ -1,14 +1,33 @@
 {
-  "total_tasks": 6,
-  "github_issue_tasks": 6,
+  "total_tasks": 12,
+  "github_issue_tasks": 12,
   "controlled_simulation_tasks": 0,
-  "baseline_runs": 6,
-  "expectation_trace_runs": 6,
-  "total_expectation_traces": 12,
+  "baseline_runs": 12,
+  "expectation_trace_runs": 12,
+  "total_expectation_traces": 24,
   "surprise_distribution": {
     "low": 0,
-    "medium": 6,
-    "high": 6
+    "medium": 12,
+    "high": 12
+  },
+  "category_distribution": {
+    "auth_missing": 1,
+    "context_mismatch": 2,
+    "empty_output": 1,
+    "malformed_output": 1,
+    "platform_error": 4,
+    "provider_misconfigured": 1,
+    "secret_leak_risk": 2
+  },
+  "source_type_distribution": {
+    "issue": 8,
+    "pr": 3,
+    "release_linked": 1
+  },
+  "evidence_quality_distribution": {
+    "high": 6,
+    "medium": 4,
+    "low": 2
   },
   "by_category": {
     "auth_missing": {
@@ -18,9 +37,9 @@
       "trace_avg_recovery_hint_quality": 3
     },
     "context_mismatch": {
-      "tasks": 1,
-      "avg_surprise": 0.58,
-      "baseline_avg_recovery_hint_quality": 0,
+      "tasks": 2,
+      "avg_surprise": 0.67,
+      "baseline_avg_recovery_hint_quality": 0.5,
       "trace_avg_recovery_hint_quality": 3
     },
     "empty_output": {
@@ -36,28 +55,34 @@
       "trace_avg_recovery_hint_quality": 3
     },
     "platform_error": {
+      "tasks": 4,
+      "avg_surprise": 0.64,
+      "baseline_avg_recovery_hint_quality": 1,
+      "trace_avg_recovery_hint_quality": 2.75
+    },
+    "provider_misconfigured": {
       "tasks": 1,
-      "avg_surprise": 0.6,
+      "avg_surprise": 0.7,
       "baseline_avg_recovery_hint_quality": 1,
       "trace_avg_recovery_hint_quality": 3
     },
     "secret_leak_risk": {
-      "tasks": 1,
-      "avg_surprise": 0.68,
-      "baseline_avg_recovery_hint_quality": 0,
-      "trace_avg_recovery_hint_quality": 2
+      "tasks": 2,
+      "avg_surprise": 0.73,
+      "baseline_avg_recovery_hint_quality": 1,
+      "trace_avg_recovery_hint_quality": 2.5
     }
   },
   "failure_detection_rate": {
-    "baseline": 0.67,
+    "baseline": 0.83,
     "expectation_trace": 1.0
   },
   "avg_recovery_hint_quality": {
-    "baseline": 0.67,
-    "expectation_trace": 2.67
+    "baseline": 0.92,
+    "expectation_trace": 2.75
   },
   "avg_time_to_diagnosis_steps": {
-    "baseline": 3.5,
+    "baseline": 3.67,
     "expectation_trace": 1
   },
   "secret_redaction_passed": true,

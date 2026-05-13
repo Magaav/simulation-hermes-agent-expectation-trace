@@ -1,0 +1,10 @@
+run_id: R009-expectation_trace
+task_id: T009
+sandbox: expectation_trace
+command: issue_harness --issue 5211 --node patched-expectation-trace
+input_summary: Use the same issue #5211 as input, but run it through the patched second-node observer.
+output_summary: Patched second node classified provider_misconfigured and produced an issue-specific recovery hint.
+failure_detected: True
+error_category: provider_misconfigured
+recovery_hint_quality: 3
+notes: Second-node patch used a fixed issue input; it did not generate or discover the issue. Recovery hint quality 3: specific actionable hint.

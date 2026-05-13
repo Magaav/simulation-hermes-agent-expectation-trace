@@ -7,4 +7,4 @@ output_summary: Patched second node classified malformed_output and produced an 
 failure_detected: True
 error_category: malformed_output
 recovery_hint_quality: 3
-notes: Second-node patch used issue input, not issue prediction. Recovery hint quality 3: specific actionable hint.
+notes: Second-node patch used a fixed issue input; it did not generate or discover the issue. Recovery hint quality 3: specific actionable hint.

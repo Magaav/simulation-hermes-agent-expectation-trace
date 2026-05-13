@@ -7,4 +7,4 @@ output_summary: Patched second node classified empty_output and produced an issu
 failure_detected: True
 error_category: empty_output
 recovery_hint_quality: 2
-notes: Second-node patch used issue input, not issue prediction. Recovery hint quality 2: useful but incomplete hint.
+notes: Second-node patch used a fixed issue input; it did not generate or discover the issue. Recovery hint quality 2: useful but incomplete hint.

@@ -1,9 +1,9 @@
 {
-  "title": "Expectation Trace: A Minimal Runtime Surprise Layer for Hermes-Agent",
+  "title": "Expectation Trace: A Minimal Runtime Observer for Hermes-Agent Issue Fixtures",
   "research_question": "Can a LeWorldModel-inspired expectation trace observer produce clearer fixture-level issue diagnostics when added to a second node and compared against a baseline representation on the same fixed issue inputs?",
   "hypothesis": "A lightweight expectation trace observer may make issue-derived runtime mismatches more observable and produce more specific fixture-level recovery hints than the baseline representation.",
   "claim_boundary": [
-    "This does not implement the full LeWorldModel paper.",
+    "This does not implement the LeWorldModel paper.",
     "This does not establish that Hermes-Agent has a neural world model.",
     "This does not forecast or discover issues.",
     "GitHub issues and PR-backed regression reports are inputs to the simulation.",
@@ -30,7 +30,7 @@
       "issue has explicit expected versus actual behavior or linked patch evidence",
       "local simulation can be bounded and safe",
       "useful to maintainers",
-      "small enough for the first issue-driven benchmark"
+      "small enough for a controlled Lab v1 fixture set"
     ],
     "honesty_note": "Inputs are issue-derived, but most were converted into bounded fixtures rather than replayed end to end in production."
   },

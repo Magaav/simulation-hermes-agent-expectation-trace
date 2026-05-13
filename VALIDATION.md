@@ -1,29 +1,33 @@
-# Lab v0 Validation
+# Lab v1 Validation
 
 Validation date: 2026-05-13
 
 ## Files Verified
 
-Required Lab v0 files exist:
+Required Lab v1 files exist:
 
 - `/local/simulation/simulation-hermes-agent-expectation-trace/lab_db/issue_inputs.json`
 - `/local/simulation/simulation-hermes-agent-expectation-trace/lab_db/manifest.json`
 - `/local/simulation/simulation-hermes-agent-expectation-trace/lab_db/dashboard_prompt.md`
 - `/local/simulation/simulation-hermes-agent-expectation-trace/results.md`
 - `/local/simulation/simulation-hermes-agent-expectation-trace/patches/expectation_trace_second_node.py`
+- `/local/simulation/simulation-hermes-agent-expectation-trace/rubrics/recovery_diagnostics_rubric.md`
+- `/local/simulation/simulation-hermes-agent-expectation-trace/dashboard/index.html`
+- `/local/simulation/simulation-hermes-agent-expectation-trace/docs/index.html`
 
 ## Artifact Checks Passed
 
-The stabilization pass verified:
+The Lab v1 pass verifies:
 
 - Required file existence.
 - JSON parsing for `manifest.json`, `study.json`, `issue_inputs.json`, `tasks.json`, `comparisons.json`, `metrics.json`, `conclusions.json`, and `chart_spec.json`.
 - JSONL parsing for `runs.jsonl` and `traces.jsonl`.
-- Metrics consistency at the Lab v0 level:
-  - total_tasks: 6
-  - github_issue_tasks: 6
+- Dashboard data parsing for `dashboard/data/metrics.json`, `dashboard/data/comparisons.json`, `dashboard/data/issue_inputs.json`, and `dashboard/data/traces.jsonl`.
+- Metrics consistency at the Lab v1 level:
+  - total_tasks: 12
+  - github_issue_tasks: 12
   - controlled_simulation_tasks: 0
-  - total_expectation_traces: 12
+  - total_expectation_traces: 24
 
 The lab metrics record these artifact validation counts:
 
@@ -42,23 +46,24 @@ The following Python files compile with in-memory `compile(...)` checks:
 ## Still Partial
 
 - The lab uses bounded issue fixtures, not full production replays.
-- Some fixtures are PR-backed or release-linked evidence rather than standalone live issue bodies.
+- Some fixtures are PR-backed or release-linked evidence rather than standalone issue bodies.
 - The second-node patch is a simulation artifact, not an upstream Hermes-Agent patch.
 - Surprise scoring and recovery-hint quality are heuristic.
 - Failure detection rates are fixture annotations, not production reliability measurements.
 - Validation counts are artifact checks, not Hermes-Agent product test coverage.
-- Pytest was unavailable, so targeted pytest suites were not run.
-- No dashboard visuals have been generated.
+- Pytest remains unavailable in this local artifact environment, so targeted pytest suites were not run.
+- Maintainer-rated scoring has not replaced the heuristic rubric yet.
 
 ## Must Not Be Claimed Yet
 
-- Do not claim Hermes-Agent predicts issues.
-- Do not claim Hermes-Agent implements LeWorldModel.
-- Do not claim the patch proves production recovery.
-- Do not claim the patch improves planning.
+- Do not claim Hermes-Agent forecasts or discovers issues.
+- Do not claim Hermes-Agent implements the LeWorldModel paper.
+- Do not claim the patch establishes production recovery.
+- Do not claim the patch changes planning.
 - Do not claim the metrics are production incident rates.
 - Do not claim the validation counts are full test coverage.
-- Do not claim statistical generalization beyond the six Lab v0 fixtures.
+- Do not claim statistical generalization beyond the selected Lab v1 fixtures.
+- Do not claim production superiority or runtime superiority.
 
 ## Runnable Status
 

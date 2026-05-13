@@ -1,0 +1,10 @@
+run_id: R007-baseline
+task_id: T007
+sandbox: baseline
+command: issue_harness --issue 2104 --node baseline-representation
+input_summary: Use Hermes-Agent issue #2104 as the simulation input for the baseline representation.
+output_summary: Baseline representation surfaces an event-loop lifecycle error after the async bridge has already failed.
+failure_detected: True
+error_category: platform_error
+recovery_hint_quality: 1
+notes: Baseline representation on issue input. Recovery hint quality 1: generic or weak hint.

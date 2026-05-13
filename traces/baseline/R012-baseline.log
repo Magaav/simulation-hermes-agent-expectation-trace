@@ -1,0 +1,10 @@
+run_id: R012-baseline
+task_id: T012
+sandbox: baseline
+command: issue_harness --issue 220 --node baseline-representation
+input_summary: Use Hermes-Agent issue #220 as the simulation input for the baseline representation.
+output_summary: Baseline representation surfaces the risk after path traversal reaches file access.
+failure_detected: True
+error_category: secret_leak_risk
+recovery_hint_quality: 2
+notes: Baseline representation on issue input. Recovery hint quality 2: useful but incomplete hint.

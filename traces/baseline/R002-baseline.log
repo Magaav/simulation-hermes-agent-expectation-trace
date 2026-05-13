@@ -1,10 +1,10 @@
 run_id: R002-baseline
 task_id: T002
 sandbox: baseline
-command: issue_harness --issue 19785 --node current-hermes-agent
-input_summary: Use Hermes-Agent issue #19785 as the simulation input for the current behavior node.
+command: issue_harness --issue 19785 --node baseline-representation
+input_summary: Use Hermes-Agent issue #19785 as the simulation input for the baseline representation.
 output_summary: Baseline symptom is visible only after command dispatch: chat starts instead of MCP registration.
 failure_detected: True
 error_category: platform_error
 recovery_hint_quality: 1
-notes: Current Hermes-Agent behavior on issue input. Recovery hint quality 1: generic or weak hint.
+notes: Baseline representation on issue input. Recovery hint quality 1: generic or weak hint.

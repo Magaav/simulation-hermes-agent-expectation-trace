@@ -7,4 +7,4 @@ output_summary: Patched second node classified secret_leak_risk and produced an 
 failure_detected: True
 error_category: secret_leak_risk
 recovery_hint_quality: 2
-notes: Second-node patch used issue input, not issue prediction. Recovery hint quality 2: useful but incomplete hint.
+notes: Second-node patch used a fixed issue input; it did not generate or discover the issue. Recovery hint quality 2: useful but incomplete hint.

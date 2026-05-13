@@ -2,7 +2,7 @@
 
 ## Abstract
 
-This lab is a reproducible simulation artifact for fixed Hermes-Agent issue and PR-backed regression fixtures. It compares a baseline representation with a patched second node that includes a LeWorldModel-inspired expectation trace observer. The observer records expected-vs-actual transition summaries, heuristic surprise scores, failure taxonomy, and recovery hints. It does not forecast or discover issues.
+This lab is a reproducible simulation artifact for fixed Hermes-Agent issue and PR-linked fixtures. It compares a baseline representation with a patched second node that includes a LeWorldModel-inspired expectation trace observer. The observer records expected-vs-actual transition summaries, heuristic surprise scores, failure taxonomy, and recovery hints. It does not forecast or discover issues.
 
 ## Paper Inspiration
 
@@ -10,26 +10,26 @@ LeWorldModel motivates this experiment only at the analogy level: compare an exp
 
 ## Method
 
-The baseline representation and patched second node were compared on the same six fixed issue inputs. Each input was converted into a bounded simulation fixture containing an expected behavior from the issue or linked PR evidence and an observed failure mode from the report.
+The baseline representation and patched second node were compared on the same 12 fixed input fixtures. Each fixture contains expected behavior from the issue, PR, or release-linked evidence and an observed failure mode from the report.
 
 ## Results
 
 These are fixture-level heuristic scores, not production measurements or statistical estimates.
 
-- total_tasks: 6
-- github_issue_tasks: 6
+- total_tasks: 12
+- github_issue_tasks: 12
 - controlled_simulation_tasks: 0
-- total_expectation_traces: 12
-- baseline_failure_detection_rate: 0.67
+- total_expectation_traces: 24
+- baseline_failure_detection_rate: 0.83
 - expectation_trace_failure_detection_rate: 1.00
-- baseline_avg_recovery_hint_quality: 0.67
-- expectation_trace_avg_recovery_hint_quality: 2.67
+- baseline_avg_recovery_hint_quality: 0.92
+- expectation_trace_avg_recovery_hint_quality: 2.75
 - artifact_validation_checks_passed: 3
 - artifact_validation_checks_failed: 0
 
 ## Conclusion
 
-On the six fixed Lab v0 fixtures, the LeWorldModel-inspired expectation trace observer produced higher fixture-level diagnostic and recovery-hint scores than the baseline representation. This is a bounded simulation result, not a product benchmark, a production superiority claim, or an implementation of LeWorldModel.
+On the 12 fixed input fixtures in Lab v1, the LeWorldModel-inspired expectation trace observer received higher fixture-level heuristic diagnostic and recovery-hint scores than the baseline representation. This is a bounded simulation result, not a product benchmark, a production superiority claim, or an implementation of LeWorldModel.
 
 ## Claim Boundary
 

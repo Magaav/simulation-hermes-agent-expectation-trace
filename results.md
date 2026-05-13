@@ -6,19 +6,19 @@ partial
 
 ## Key Metrics
 
-These metrics are fixture-level heuristic scores from the frozen Lab v0 dataset. They are not production reliability measurements or statistical estimates.
+These metrics are fixture-level heuristic scores from the controlled Lab v1 dataset. They are not production reliability measurements or statistical estimates.
 
-- total_tasks: 6
-- github_issue_tasks: 6
+- total_tasks: 12
+- github_issue_tasks: 12
 - controlled_simulation_tasks: 0
-- baseline_runs: 6
-- expectation_trace_runs: 6
-- total_expectation_traces: 12
-- baseline_failure_detection_rate: 0.67
+- baseline_runs: 12
+- expectation_trace_runs: 12
+- total_expectation_traces: 24
+- baseline_failure_detection_rate: 0.83
 - expectation_trace_failure_detection_rate: 1.00
-- baseline_avg_recovery_hint_quality: 0.67
-- expectation_trace_avg_recovery_hint_quality: 2.67
-- baseline_avg_time_to_diagnosis_steps: 3.50
+- baseline_avg_recovery_hint_quality: 0.92
+- expectation_trace_avg_recovery_hint_quality: 2.75
+- baseline_avg_time_to_diagnosis_steps: 3.67
 - expectation_trace_avg_time_to_diagnosis_steps: 1.00
 - artifact_validation_checks_passed: 3
 - artifact_validation_checks_failed: 0
@@ -38,18 +38,24 @@ The comparison label from `comparisons.json` is a fixture-scoring label, not a p
 
 | Task | Category | Fixture-Scored Higher | Evidence | Interpretation |
 | --- | --- | --- | --- | --- |
-| T001 | context_mismatch | expectation_trace | medium | Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence. |
-| T002 | platform_error | expectation_trace | medium | Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence. |
-| T003 | auth_missing | expectation_trace | high | Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence. |
-| T004 | malformed_output | expectation_trace | medium | Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence. |
-| T005 | empty_output | expectation_trace | low | Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence. |
-| T006 | secret_leak_risk | expectation_trace | low | Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence. |
+| T001 | context_mismatch | expectation_trace | medium | Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence. |
+| T002 | platform_error | expectation_trace | medium | Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence. |
+| T003 | auth_missing | expectation_trace | high | Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence. |
+| T004 | malformed_output | expectation_trace | medium | Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence. |
+| T005 | empty_output | expectation_trace | low | Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence. |
+| T006 | secret_leak_risk | expectation_trace | low | Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence. |
+| T007 | platform_error | expectation_trace | high | Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence. |
+| T008 | platform_error | expectation_trace | medium | Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence. |
+| T009 | provider_misconfigured | expectation_trace | high | Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence. |
+| T010 | platform_error | expectation_trace | high | Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence. |
+| T011 | context_mismatch | expectation_trace | high | Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence. |
+| T012 | secret_leak_risk | expectation_trace | high | Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence. |
 
 ## Method Correction
 
-Issues are inputs to the simulation. The second node is patched with Expectation Trace and compared against the baseline representation on those same issue inputs. The experiment does not predict issues.
+Issues are inputs to the simulation. The second node is patched with Expectation Trace and compared against the baseline representation on those same issue inputs. The experiment does not forecast or discover issues.
 
-The baseline node is a representation of current behavior derived from issue and PR evidence, not a complete replay of production Hermes-Agent.
+The baseline node is a baseline representation derived from issue and PR evidence, not a complete replay of production Hermes-Agent.
 
 ## Limitations
 

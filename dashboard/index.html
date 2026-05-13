@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Expectation Trace Lab v0</title>
+  <title>Expectation Trace Lab v1</title>
   <style>
     :root {
       color-scheme: light;
@@ -13,6 +13,7 @@
       --muted: #596579;
       --line: #d9dee7;
       --accent: #1f6feb;
+      --accent-2: #0f766e;
       --caution: #7c2d12;
       --caution-bg: #fff7ed;
     }
@@ -71,31 +72,76 @@
       margin: 18px 0;
     }
 
-    .grid {
+    .grid,
+    .chart-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       margin: 18px 0 24px;
     }
 
-    .metric {
+    .grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .chart-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .metric,
+    .chart {
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 6px;
       padding: 14px;
+    }
+
+    .metric {
       min-height: 104px;
     }
 
-    .metric .label {
+    .metric .label,
+    .chart-title,
+    .row-label {
       color: var(--muted);
       font-size: 13px;
-      margin-bottom: 10px;
     }
 
     .metric .value {
       font-size: 26px;
       font-weight: 720;
       letter-spacing: 0;
+    }
+
+    .chart-title {
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 128px 1fr 54px;
+      gap: 10px;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .bar-track {
+      height: 12px;
+      border-radius: 999px;
+      background: #e8edf5;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: var(--accent);
+      min-width: 2px;
+    }
+
+    .bar-fill.observer {
+      background: var(--accent-2);
     }
 
     section {
@@ -114,7 +160,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 780px;
+      min-width: 860px;
       font-size: 14px;
     }
 
@@ -157,19 +203,21 @@
       color: #991b1b;
     }
 
-    @media (max-width: 860px) {
-      .grid {
+    @media (max-width: 960px) {
+      .grid,
+      .chart-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 620px) {
       main {
         width: min(100% - 20px, 1180px);
         padding-top: 22px;
       }
 
-      .grid {
+      .grid,
+      .chart-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -178,8 +226,8 @@
 <body>
   <main>
     <header>
-      <h1>Expectation Trace Lab v0</h1>
-      <p>Issue-fixture simulation harness for Hermes-Agent recovery diagnostics.</p>
+      <h1>Expectation Trace Lab v1</h1>
+      <p>Controlled issue-fixture simulation harness for Hermes-Agent recovery diagnostics.</p>
       <div class="banner">Bounded simulation artifact. Not a production benchmark. Not proof of runtime superiority.</div>
     </header>
 
@@ -188,6 +236,12 @@
     <section aria-labelledby="overview-title">
       <h2 id="overview-title">Overview</h2>
       <div class="grid" id="metrics-grid"></div>
+    </section>
+
+    <section aria-labelledby="charts-title">
+      <h2 id="charts-title">Fixture-Level Metrics</h2>
+      <p>These charts visualize fixture-level heuristic scores, not production reliability measurements.</p>
+      <div class="chart-grid" id="chart-grid"></div>
     </section>
 
     <section aria-labelledby="comparison-title">
@@ -203,6 +257,8 @@
               <th>Observer Detection</th>
               <th>Baseline Hint Quality</th>
               <th>Observer Hint Quality</th>
+              <th>Baseline Steps</th>
+              <th>Observer Steps</th>
               <th>Max Surprise</th>
               <th>Evidence</th>
             </tr>
@@ -214,16 +270,19 @@
 
     <section aria-labelledby="issues-title">
       <h2 id="issues-title">Issue Fixture Sources</h2>
-      <p>Issues and PRs are fixed input fixtures. They are not predicted or discovered by the observer.</p>
+      <p>Issues and PRs are fixed input fixtures. They are not forecast or discovered by the observer.</p>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>Issue / PR</th>
+              <th>Fixture</th>
               <th>Title</th>
               <th>Category</th>
-              <th>Source Basis</th>
-              <th>Evidence</th>
+              <th>Source Type</th>
+              <th>Evidence Quality</th>
+              <th>Expected Behavior</th>
+              <th>Observed Failure</th>
+              <th>Source</th>
             </tr>
           </thead>
           <tbody id="issues-body"></tbody>
@@ -255,11 +314,12 @@
     <section aria-labelledby="limits-title">
       <h2 id="limits-title">Limitations</h2>
       <ul>
-        <li>Fixed input fixtures, not issue prediction.</li>
+        <li>Fixed input fixtures, not issue forecasting.</li>
         <li>Fixture-level heuristic scores, not production measurements.</li>
         <li>Baseline representation, not full production replay.</li>
-        <li>LeWorldModel-inspired expectation trace observer, not a full LeWorldModel implementation.</li>
+        <li>LeWorldModel-inspired expectation trace observer, not an implementation of the LeWorldModel paper.</li>
         <li>No claim of runtime superiority, planning gains, or production recovery.</li>
+        <li>Maintainer-rated scoring has not replaced the heuristic rubric yet.</li>
       </ul>
     </section>
   </main>
@@ -301,6 +361,42 @@
       return card;
     }
 
+    function barRow(label, value, max, className = "") {
+      const row = document.createElement("div");
+      row.className = "bar-row";
+      const labelEl = document.createElement("div");
+      labelEl.className = "row-label";
+      labelEl.textContent = label;
+      const track = document.createElement("div");
+      track.className = "bar-track";
+      const fill = document.createElement("div");
+      fill.className = `bar-fill ${className}`.trim();
+      const safeMax = Math.max(Number(max) || 1, 1);
+      fill.style.width = `${Math.max(2, Math.min(100, (Number(value) / safeMax) * 100))}%`;
+      track.appendChild(fill);
+      const valueEl = document.createElement("div");
+      valueEl.className = "row-label";
+      valueEl.textContent = fmtRate(value);
+      row.append(labelEl, track, valueEl);
+      return row;
+    }
+
+    function chart(title, rows) {
+      const card = document.createElement("div");
+      card.className = "chart";
+      const titleEl = document.createElement("div");
+      titleEl.className = "chart-title";
+      titleEl.textContent = title;
+      card.append(titleEl, ...rows);
+      return card;
+    }
+
+    function distributionRows(values) {
+      const entries = Object.entries(values || {});
+      const max = Math.max(...entries.map(([, value]) => Number(value)), 1);
+      return entries.map(([label, value]) => barRow(label, value, max));
+    }
+
     async function loadJson(path) {
       const response = await fetch(path);
       if (!response.ok) throw new Error(`${path}: ${response.status}`);
@@ -328,6 +424,31 @@
       );
     }
 
+    function renderCharts(metrics) {
+      const chartGrid = document.getElementById("chart-grid");
+      const stepMax = Math.max(
+        metrics.avg_time_to_diagnosis_steps?.baseline ?? 1,
+        metrics.avg_time_to_diagnosis_steps?.expectation_trace ?? 1
+      );
+      chartGrid.replaceChildren(
+        chart("Failure Detection", [
+          barRow("Baseline", metrics.failure_detection_rate?.baseline ?? 0, 1),
+          barRow("Observer", metrics.failure_detection_rate?.expectation_trace ?? 0, 1, "observer")
+        ]),
+        chart("Recovery Hint Quality", [
+          barRow("Baseline", metrics.avg_recovery_hint_quality?.baseline ?? 0, 3),
+          barRow("Observer", metrics.avg_recovery_hint_quality?.expectation_trace ?? 0, 3, "observer")
+        ]),
+        chart("Diagnosis Steps", [
+          barRow("Baseline", metrics.avg_time_to_diagnosis_steps?.baseline ?? 0, stepMax),
+          barRow("Observer", metrics.avg_time_to_diagnosis_steps?.expectation_trace ?? 0, stepMax, "observer")
+        ]),
+        chart("Category Breakdown", distributionRows(metrics.category_distribution)),
+        chart("Source Type Distribution", distributionRows(metrics.source_type_distribution)),
+        chart("Evidence Quality Distribution", distributionRows(metrics.evidence_quality_distribution))
+      );
+    }
+
     function renderComparisons(comparisons) {
       const body = document.getElementById("comparison-body");
       body.replaceChildren(...comparisons.map((row) => {
@@ -339,6 +460,8 @@
           cell(row.expectation_trace?.failure_detected),
           cell(row.baseline?.recovery_hint_quality),
           cell(row.expectation_trace?.recovery_hint_quality),
+          cell(row.baseline?.time_to_diagnosis_steps),
+          cell(row.expectation_trace?.time_to_diagnosis_steps),
           cell(row.expectation_trace?.max_surprise_score),
           cell(row.evidence_strength)
         );
@@ -351,11 +474,14 @@
       body.replaceChildren(...issues.map((issue) => {
         const tr = document.createElement("tr");
         tr.append(
-          linkCell(`#${issue.issue_number}`, issue.issue_url),
+          cell(issue.id || issue.task_id),
           cell(issue.title),
           cell(issue.category),
-          cell(issue.source_basis),
-          linkCell("evidence", issue.evidence_url || issue.issue_url)
+          cell(issue.source_type),
+          cell(issue.evidence_quality),
+          cell(issue.expected_behavior),
+          cell(issue.observed_failure),
+          linkCell(issue.issue_number ? `#${issue.issue_number}` : "source", issue.source_url || issue.issue_url)
         );
         return tr;
       }));
@@ -387,11 +513,12 @@
           loadJsonl("data/traces.jsonl")
         ]);
         renderMetrics(metrics);
+        renderCharts(metrics);
         renderComparisons(comparisons);
         renderIssues(issues);
         renderTraces(traces);
         const status = document.getElementById("status");
-        status.textContent = "Loaded local Lab v0 files from dashboard/data.";
+        status.textContent = "Loaded local Lab v1 files from dashboard/data.";
       } catch (error) {
         const status = document.getElementById("status");
         status.classList.add("error");

@@ -1,0 +1,10 @@
+run_id: R011-baseline
+task_id: T011
+sandbox: baseline
+command: issue_harness --issue 14726 --node baseline-representation
+input_summary: Use Hermes-Agent issue #14726 as the simulation input for the baseline representation.
+output_summary: Baseline representation surfaces lack of progress after delegation stalls.
+failure_detected: True
+error_category: context_mismatch
+recovery_hint_quality: 1
+notes: Baseline representation on issue input. Recovery hint quality 1: generic or weak hint.

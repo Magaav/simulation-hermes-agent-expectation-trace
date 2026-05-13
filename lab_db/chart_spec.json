@@ -1,6 +1,6 @@
 {
-  "dashboard_title": "Expectation Trace Lab",
-  "subtitle": "Issue-driven JEPA-inspired runtime surprise scoring for Hermes-Agent",
+  "dashboard_title": "Expectation Trace Lab v1",
+  "subtitle": "Issue-fixture JEPA-inspired runtime observer for Hermes-Agent",
   "charts": [
     {
       "id": "overview_cards",
@@ -25,12 +25,39 @@
       "title": "Issue Inputs",
       "data_source": "issue_inputs.json",
       "columns": [
-        "issue_number",
+        "id",
         "title",
         "category",
-        "source_basis",
-        "evidence_strength",
-        "issue_url"
+        "source_type",
+        "evidence_quality",
+        "source_url"
+      ]
+    },
+    {
+      "id": "failure_detection_comparison",
+      "type": "grouped_bar_chart",
+      "title": "Failure Detection: Baseline vs Observer",
+      "data_source": "metrics.json",
+      "metrics": [
+        "failure_detection_rate"
+      ]
+    },
+    {
+      "id": "recovery_hint_quality_comparison",
+      "type": "grouped_bar_chart",
+      "title": "Recovery Hint Quality: Baseline vs Observer",
+      "data_source": "metrics.json",
+      "metrics": [
+        "avg_recovery_hint_quality"
+      ]
+    },
+    {
+      "id": "diagnosis_steps_comparison",
+      "type": "grouped_bar_chart",
+      "title": "Diagnosis Steps: Baseline vs Observer",
+      "data_source": "metrics.json",
+      "metrics": [
+        "avg_time_to_diagnosis_steps"
       ]
     },
     {
@@ -48,7 +75,7 @@
     {
       "id": "sandbox_comparison",
       "type": "grouped_bar_chart",
-      "title": "Current Node vs Patched Second Node",
+      "title": "Baseline Representation vs Patched Second Node",
       "data_source": "metrics.json",
       "metrics": [
         "failure_detection_rate",
@@ -70,6 +97,37 @@
         "winner",
         "evidence_strength"
       ]
+    },
+    {
+      "id": "category_breakdown",
+      "type": "bar_chart",
+      "title": "Category Breakdown",
+      "data_source": "metrics.json",
+      "y": "category_distribution"
+    },
+    {
+      "id": "source_type_distribution",
+      "type": "bar_chart",
+      "title": "Source Type Distribution",
+      "data_source": "metrics.json",
+      "x": [
+        "issue",
+        "pr",
+        "release_linked"
+      ],
+      "y": "source_type_distribution"
+    },
+    {
+      "id": "evidence_quality_distribution",
+      "type": "bar_chart",
+      "title": "Evidence Quality Distribution",
+      "data_source": "metrics.json",
+      "x": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "y": "evidence_quality_distribution"
     },
     {
       "id": "expected_vs_actual_examples",
@@ -113,7 +171,7 @@
       "hype",
       "overclaiming",
       "marketing-only language",
-      "claims that issues were predicted"
+      "claims that issues were generated or discovered"
     ],
     "emphasize": [
       "issue inputs",

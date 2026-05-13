@@ -1,0 +1,10 @@
+run_id: R009-baseline
+task_id: T009
+sandbox: baseline
+command: issue_harness --issue 5211 --node baseline-representation
+input_summary: Use Hermes-Agent issue #5211 as the simulation input for the baseline representation.
+output_summary: Baseline representation surfaces provider authorization failure after model normalization has already changed the requested model.
+failure_detected: True
+error_category: provider_misconfigured
+recovery_hint_quality: 1
+notes: Baseline representation on issue input. Recovery hint quality 1: generic or weak hint.

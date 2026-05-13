@@ -1,8 +1,8 @@
 {
-  "main_conclusion": "On the six fixed Lab v0 fixtures, the LeWorldModel-inspired expectation trace observer produced higher fixture-level diagnostic and recovery-hint scores than the baseline representation. This is a bounded simulation result, not a product benchmark, a production superiority claim, or an implementation of LeWorldModel.",
+  "main_conclusion": "On the 12 fixed input fixtures in Lab v1, the LeWorldModel-inspired expectation trace observer received higher fixture-level heuristic diagnostic and recovery-hint scores than the baseline representation. This is a bounded simulation result, not a product benchmark, a production superiority claim, or an implementation of LeWorldModel.",
   "secondary_conclusions": [
     "The strongest case was issue #20982 because the issue body provides expected behavior, actual behavior, root cause, and affected files.",
-    "The second node scored highest when the baseline representation surfaced the symptom later than the violated dispatcher, provider, or tool-boundary precondition.",
+    "The second node received higher fixture-level heuristic scores when the baseline representation surfaced the symptom later than the violated dispatcher, provider, or tool-boundary precondition.",
     "Issue-input traces are inspectable because they separate issue evidence, run records, transition records, comparisons, and scientific interpretation."
   ],
   "what_worked": [
@@ -33,8 +33,8 @@
     "Pytest unavailable in this environment",
     "Second-node patch is a simulation artifact, not an upstream Hermes-Agent code change"
   ],
-  "scientific_honesty": "The fixture-level data is consistent with the hypothesis that expectation tracing can improve observability within this bounded simulation. It does not support claims of issue forecasting, full LeWorldModel behavior, learned latent dynamics, production superiority, or planning gains.",
-  "recommended_next_experiment": "Select 10 to 20 live or recently closed Hermes-Agent issues, build executable reproduction fixtures for both nodes, add the observer only to the second node, run tests under pytest, and ask maintainers to rate recovery-hint usefulness.",
+  "scientific_honesty": "The fixture-level data is consistent with the narrower hypothesis that expectation tracing can make selected issue-fixture diagnostics clearer within this bounded simulation. It does not support claims of issue forecasting, LeWorldModel-style learned dynamics, production superiority, runtime superiority, statistical significance, or planning gains.",
+  "recommended_next_experiment": "Ask Hermes-Agent maintainers to review the fixture set and rubric, then replace or calibrate heuristic recovery-hint scoring with maintainer-rated scores before considering executable CI-style recovery evaluations.",
   "recommended_pr_scope": {
     "title": "Evaluate optional issue-driven Expectation Trace for tool-call surprise scoring",
     "scope": "measurement-only",

@@ -21,7 +21,7 @@
       "dominant_surprise_level": "high"
     },
     "winner": "expectation_trace",
-    "interpretation": "Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence.",
+    "interpretation": "Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence.",
     "evidence_strength": "medium",
     "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
   },
@@ -47,7 +47,7 @@
       "dominant_surprise_level": "high"
     },
     "winner": "expectation_trace",
-    "interpretation": "Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence.",
+    "interpretation": "Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence.",
     "evidence_strength": "medium",
     "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
   },
@@ -73,7 +73,7 @@
       "dominant_surprise_level": "high"
     },
     "winner": "expectation_trace",
-    "interpretation": "Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence.",
+    "interpretation": "Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence.",
     "evidence_strength": "high",
     "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
   },
@@ -99,7 +99,7 @@
       "dominant_surprise_level": "high"
     },
     "winner": "expectation_trace",
-    "interpretation": "Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence.",
+    "interpretation": "Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence.",
     "evidence_strength": "medium",
     "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
   },
@@ -125,7 +125,7 @@
       "dominant_surprise_level": "high"
     },
     "winner": "expectation_trace",
-    "interpretation": "Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence.",
+    "interpretation": "Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence.",
     "evidence_strength": "low",
     "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
   },
@@ -151,8 +151,164 @@
       "dominant_surprise_level": "high"
     },
     "winner": "expectation_trace",
-    "interpretation": "Under the fixture scoring rules, the patched second node produced a more specific recovery signal tied to issue evidence.",
+    "interpretation": "Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence.",
     "evidence_strength": "low",
+    "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
+  },
+  {
+    "task_id": "T007",
+    "category": "platform_error",
+    "baseline": {
+      "run_id": "R007-baseline",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "platform_error",
+      "recovery_hint_quality": 1,
+      "time_to_diagnosis_steps": 4
+    },
+    "expectation_trace": {
+      "run_id": "R007-expectation_trace",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "platform_error",
+      "recovery_hint_quality": 3,
+      "time_to_diagnosis_steps": 1,
+      "max_surprise_score": 0.78,
+      "dominant_surprise_level": "high"
+    },
+    "winner": "expectation_trace",
+    "interpretation": "Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence.",
+    "evidence_strength": "high",
+    "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
+  },
+  {
+    "task_id": "T008",
+    "category": "platform_error",
+    "baseline": {
+      "run_id": "R008-baseline",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "platform_error",
+      "recovery_hint_quality": 1,
+      "time_to_diagnosis_steps": 3
+    },
+    "expectation_trace": {
+      "run_id": "R008-expectation_trace",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "platform_error",
+      "recovery_hint_quality": 2,
+      "time_to_diagnosis_steps": 1,
+      "max_surprise_score": 0.68,
+      "dominant_surprise_level": "high"
+    },
+    "winner": "expectation_trace",
+    "interpretation": "Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence.",
+    "evidence_strength": "medium",
+    "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
+  },
+  {
+    "task_id": "T009",
+    "category": "provider_misconfigured",
+    "baseline": {
+      "run_id": "R009-baseline",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "provider_misconfigured",
+      "recovery_hint_quality": 1,
+      "time_to_diagnosis_steps": 4
+    },
+    "expectation_trace": {
+      "run_id": "R009-expectation_trace",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "provider_misconfigured",
+      "recovery_hint_quality": 3,
+      "time_to_diagnosis_steps": 1,
+      "max_surprise_score": 0.82,
+      "dominant_surprise_level": "high"
+    },
+    "winner": "expectation_trace",
+    "interpretation": "Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence.",
+    "evidence_strength": "high",
+    "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
+  },
+  {
+    "task_id": "T010",
+    "category": "platform_error",
+    "baseline": {
+      "run_id": "R010-baseline",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "platform_error",
+      "recovery_hint_quality": 1,
+      "time_to_diagnosis_steps": 4
+    },
+    "expectation_trace": {
+      "run_id": "R010-expectation_trace",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "platform_error",
+      "recovery_hint_quality": 3,
+      "time_to_diagnosis_steps": 1,
+      "max_surprise_score": 0.84,
+      "dominant_surprise_level": "high"
+    },
+    "winner": "expectation_trace",
+    "interpretation": "Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence.",
+    "evidence_strength": "high",
+    "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
+  },
+  {
+    "task_id": "T011",
+    "category": "context_mismatch",
+    "baseline": {
+      "run_id": "R011-baseline",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "context_mismatch",
+      "recovery_hint_quality": 1,
+      "time_to_diagnosis_steps": 5
+    },
+    "expectation_trace": {
+      "run_id": "R011-expectation_trace",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "context_mismatch",
+      "recovery_hint_quality": 3,
+      "time_to_diagnosis_steps": 1,
+      "max_surprise_score": 0.88,
+      "dominant_surprise_level": "high"
+    },
+    "winner": "expectation_trace",
+    "interpretation": "Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence.",
+    "evidence_strength": "high",
+    "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
+  },
+  {
+    "task_id": "T012",
+    "category": "secret_leak_risk",
+    "baseline": {
+      "run_id": "R012-baseline",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "secret_leak_risk",
+      "recovery_hint_quality": 2,
+      "time_to_diagnosis_steps": 3
+    },
+    "expectation_trace": {
+      "run_id": "R012-expectation_trace",
+      "success": true,
+      "failure_detected": true,
+      "error_category": "secret_leak_risk",
+      "recovery_hint_quality": 3,
+      "time_to_diagnosis_steps": 1,
+      "max_surprise_score": 0.9,
+      "dominant_surprise_level": "high"
+    },
+    "winner": "expectation_trace",
+    "interpretation": "Under the fixture-level heuristic scoring rules, the patched second node received a higher diagnostic/recovery score tied to issue evidence.",
+    "evidence_strength": "high",
     "limitations": "Issue evidence was converted into a bounded simulation fixture; this is not a full production replay."
   }
 ]

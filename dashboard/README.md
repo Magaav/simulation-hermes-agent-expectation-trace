@@ -1,6 +1,6 @@
-# Expectation Trace Lab v0 Dashboard
+# Expectation Trace Lab v1 Dashboard
 
-This is a static, GitHub Pages-compatible dashboard for Lab v0.
+This is a static, GitHub Pages-compatible dashboard for Lab v1.
 
 It uses only local copied data files:
 

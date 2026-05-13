@@ -2,7 +2,7 @@
 
 You are given a scientific lab database from an experiment named:
 
-    Expectation Trace Lab
+    Expectation Trace Lab v1
 
 Your task is to generate a serious scientific dashboard from the structured files in this directory.
 
@@ -19,12 +19,12 @@ Use these files:
 - chart_spec.json
 
 Dashboard goal:
-Visualize whether a minimal JEPA/LeWorldModel-inspired Expectation Trace patch produced higher fixture-level diagnostic and recovery-hint scores than the baseline representation on the same issue inputs.
+Visualize whether a minimal JEPA/LeWorldModel-inspired expectation trace observer received higher fixture-level heuristic diagnostic and recovery-hint scores than the baseline representation on the same fixed input fixtures.
 
 Important scientific constraints:
 - Do not overclaim.
 - Do not say Hermes-Agent has a full world model.
-- Do not say the system predicts issues.
+- Do not say the system forecasts or discovers issues.
 - Issues are inputs to the simulation.
 - Treat all metrics as fixture-level heuristic scores, not production reliability measurements.
 - Treat validation counts as artifact checks, not full product test coverage.
@@ -45,14 +45,14 @@ Required dashboard sections:
 2. Research Question
 3. Method
 4. Issue Inputs
-5. Current Node vs Patched Second Node
+5. Baseline Representation vs Patched Second Node
 6. Surprise Distribution
 7. Per-Issue Results
 8. Expected vs Actual Trace Examples
 9. Failure Taxonomy
 10. Scientific Conclusion
 11. Limitations
-12. Recommended Next PR
+12. Recommended Next Review
 
 Visual tone:
 Serious, clean, research-style.
@@ -61,8 +61,8 @@ No fake certainty.
 No "breakthrough" language unless explicitly supported by the data.
 
 Core interpretation:
-The experiment does not prove Hermes-Agent has LeWorldModel.
-It evaluates whether a small expected-vs-actual runtime trace patch produces clearer structured diagnostics under the frozen Lab v0 fixture scoring rules.
+The experiment does not establish that Hermes-Agent has LeWorldModel.
+It evaluates whether a small expected-vs-actual runtime trace observer produces clearer structured diagnostics under the controlled Lab v1 fixture scoring rules.
 
 Output:
 Generate a dashboard-ready design or implementation using the available data.

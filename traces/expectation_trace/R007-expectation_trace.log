@@ -1,8 +1,8 @@
-run_id: R002-expectation_trace
-task_id: T002
+run_id: R007-expectation_trace
+task_id: T007
 sandbox: expectation_trace
-command: issue_harness --issue 19785 --node patched-expectation-trace
-input_summary: Use the same issue #19785 as input, but run it through the patched second-node observer.
+command: issue_harness --issue 2104 --node patched-expectation-trace
+input_summary: Use the same issue #2104 as input, but run it through the patched second-node observer.
 output_summary: Patched second node classified platform_error and produced an issue-specific recovery hint.
 failure_detected: True
 error_category: platform_error
